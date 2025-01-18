@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://bqq0vv2u017d7"]
+
+[ext_resource type="Texture2D" uid="uid://jw5uixpn5h6w" path="res://Textures/GRASS.png" id="1_fcvn1"]
+[ext_resource type="PackedScene" uid="uid://my784f4cj5jo" path="res://Actors/Player.tscn" id="1_gpwvg"]
+[ext_resource type="Texture2D" uid="uid://dypxs0iuegry8" path="res://Textures/SKY.png" id="2_7vr7m"]
+[ext_resource type="PackedScene" uid="uid://ceq1clcynfanl" path="res://Actors/Tree.tscn" id="4_rjayb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3qmf"]
+albedo_texture = ExtResource("1_fcvn1")
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+uv1_scale = Vector3(74.745, 74.745, 74.745)
+uv2_scale = Vector3(18.7, 18.7, 18.7)
+texture_filter = 0
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xsey1"]
+panorama = ExtResource("2_7vr7m")
+filter = false
+
+[sub_resource type="Sky" id="Sky_1rtoe"]
+sky_material = SubResource("PanoramaSkyMaterial_xsey1")
+
+[sub_resource type="Environment" id="Environment_w3nob"]
+background_mode = 2
+sky = SubResource("Sky_1rtoe")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(848.041, 0, 0, 0, 1.00207, 0, 0, 0, 1081.26, 0, -0.335938, 0)
+use_collision = true
+size = Vector3(1, 0.328125, 1)
+material = SubResource("StandardMaterial3D_q3qmf")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20719, 1.83252, 0)
+use_collision = true
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20719, 1.83252, 3.14046)
+use_collision = true
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20719, 1.83252, 1.67499)
+use_collision = true
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20986, 1.83252, -4.46093)
+use_collision = true
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20986, 1.83252, -1.32046)
+use_collision = true
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20986, 1.83252, -2.78593)
+use_collision = true
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_gpwvg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200912, 0.936275, 0.40686)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w3nob")
+
+[node name="Sprite3D" parent="." instance=ExtResource("4_rjayb")]
+transform = Transform3D(1.89981, 0, 0, 0, 1.89981, 0, 0, 0, 1.89981, -6.00624, 2.22333, -3.99884)
